@@ -1,0 +1,42 @@
+# Name of workflow
+name: Cypress Component Tests Workflow
+
+# Trigger workflow on pull requests
+on:
+  pull_request:
+    branches:
+      - develop
+      - staging
+
+# Jobs to carry out
+jobs:
+  test:
+    # Operating system to run the job on
+    runs-on: ubuntu-latest
+
+    # Steps in the job
+    steps:
+      # Get code from repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Use Node.js 18.x (or version compatible with your project)
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      # Install dependencies
+      - name: 🧰 Install Dependencies
+        run: npm install
+
+    #   - name: Run Lint
+        # run: npm run lint
+
+      - name: Run Build
+        run: npm run build
+
+      # Run tests
+      - name: Run Tests
+        run: npm run test
+
