@@ -27,9 +27,16 @@ jobs:
           node-version: 18.x
 
       # Install dependencies
-      - name: Install Dependencies
+      - name: 🧰 Install Dependencies
         run: npm install
 
-      # Run Cypress tests
-      - name: Run Cypress Tests
-        run: npx cypress run
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Run Build
+        run: npm run build
+
+      # Run tests
+      - name: Run Tests
+        run: npm run test
+
